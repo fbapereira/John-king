@@ -1,14 +1,22 @@
 <script setup>
 import { useCategoryStore } from '@/stores/categories'
+import { RouterLink } from 'vue-router'
 
 const store = useCategoryStore()
 const categories = store.categories
 </script>
 <template>
-  <!-- RouterLink to="/">Home</RouterLink> -->
+  <!--  -->
   <div class="menu">
+    <div class="menu-item">
+      <RouterLink :to="'/'">
+        <div class="container-card">Home</div>
+      </RouterLink>
+    </div>
     <div class="menu-item" v-for="category in categories" v-bind:key="category.slug">
-      <div class="container-card">{{ category.name }}</div>
+      <RouterLink :to="category.slug">
+        <div class="container-card">{{ category.name }}</div>
+      </RouterLink>
     </div>
   </div>
 </template>
@@ -33,6 +41,8 @@ const categories = store.categories
       border-radius: 45px;
       padding: 8px;
       cursor: pointer;
+      color: var(--primary-color);
+
       transition:
         color 0.5s,
         border 0.5s,
@@ -55,6 +65,13 @@ const categories = store.categories
         border: 2px solid var(--primary-color);
         background-color: var(--primary-color);
         text-decoration: underline;
+      }
+    }
+
+    .router-link-active {
+      .container-card {
+        border: 2px solid var(--primary-color);
+        background-color: var(--primary-color);
       }
     }
   }

@@ -32,6 +32,13 @@ const query = gql`
 export const useCategoryStore = defineStore('category', () => {
   const categoriesData = ref([])
   const categories = computed(() => categoriesData)
+
+  const itemsByCategory = computed(() => {
+    return (category) => {
+      return categoriesData.value.find((c) => c.slug === category)?.artItem || []
+    }
+  })
+
   apolloClient
     .query({
       query
@@ -40,5 +47,5 @@ export const useCategoryStore = defineStore('category', () => {
       categoriesData.value = data.categories
     })
 
-  return { categories }
+  return { categories, itemsByCategory }
 })

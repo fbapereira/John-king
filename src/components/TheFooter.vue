@@ -27,7 +27,7 @@ const categories = store.categories
           <ul class="footer-links">
             <template v-for="category in categories" v-bind:key="category.slug">
               <li>
-                <a>{{ category.name }}</a>
+                <RouterLink :to="category.slug"> {{ category.name }} </RouterLink>
               </li>
             </template>
           </ul>

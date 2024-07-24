@@ -15,7 +15,10 @@ const categories = store.categories
     <TheMenu />
 
     <template v-for="category in categories" v-bind:key="category.slug">
-      <h1>{{ category.name }} <a href="">See all</a></h1>
+      <h1>
+        {{ category.name }}
+        <RouterLink :to="category.slug"> See all </RouterLink>
+      </h1>
       <div class="items" v-for="artItem in category.artItem" v-bind:key="artItem.slug">
         <Card
           :title="artItem.title"
