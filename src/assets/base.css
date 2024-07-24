@@ -26,3 +26,8 @@ body {
   background: rgb(0, 107, 109);
   background: linear-gradient(350deg, rgba(0, 107, 109, 1) 11%, rgba(0, 0, 0, 1) 51%);
 }
+
+:root {
+  --primary-color: #00d4ff;
+  --secundary-color: #e89f20;
+}

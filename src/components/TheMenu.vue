@@ -23,7 +23,7 @@
 
   .menu-item {
     width: 10rem;
-    color: #2ab8ba;
+    color: var(--primary-color);
     text-align: center;
 
     .container-card {
@@ -33,6 +33,12 @@
       background-clip: padding-box;
       border-radius: 45px;
       padding: 8px;
+      cursor: pointer;
+      transition:
+        color 0.5s,
+        border 0.5s,
+        text-decoration 0.5s,
+        background-color 0.5s;
 
       &::before {
         position: absolute;
@@ -43,7 +49,13 @@
         content: '';
         z-index: -1;
         border-radius: 45px;
-        background: linear-gradient(71deg, #0d1212, #2ab8ba, #0d1212);
+        background: linear-gradient(71deg, #0d1212, var(--primary-color), #0d1212);
+      }
+
+      &:hover {
+        border: 2px solid var(--primary-color);
+        background-color: var(--primary-color);
+        text-decoration: underline;
       }
     }
   }

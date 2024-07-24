@@ -6,27 +6,27 @@
         <div class="col-sm-12 col-md-6">
           <h6>About</h6>
           <p class="text-justify">
-            Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative to help the upcoming
-            programmers with the code. Scanfcode focuses on providing the most efficient code or
-            snippets as the code wants to be simple. We will help programmers build up concepts in
-            different programming languages that include C, C++, Java, HTML, CSS, Bootstrap,
-            JavaScript, PHP, Android, SQL and Algorithm.
+            Jon Aedyn King aka 'Aedyn Jak' is a multimedia artist, writer and director, from Malta
+            and Northern Ireland. He uses the pen name Aedyn Jak for his books and the work that
+            goes into those books; written, audio or visual, as well as some artworks. He applies
+            the name Jon Aedyn King for everything else, specifically his audio-visual work on
+            YouTube, screenwriting and film work. He is primarily a researcher, observer, traveler
+            and reader - a predilection to be a student of life. He has an unusual take on the
+            universe and the things he witnesses around. It is that curiosity which amplifies his
+            range of media and his artistic strides are reflected through that filter.
           </p>
         </div>
 
         <div class="col-xs-6 col-md-3">
           <h6>Categories</h6>
           <ul class="footer-links">
-            <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
-            <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
-            <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
-            <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
-            <li><a href="http://scanfcode.com/category/android/">Android</a></li>
-            <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
+            <li><a>JakPLanks</a></li>
+            <li><a>audio-visualn</a></li>
+            <li><a>Books</a></li>
           </ul>
         </div>
 
-        <div class="col-xs-6 col-md-3">
+        <!-- <div class="col-xs-6 col-md-3">
           <h6>Quick Links</h6>
           <ul class="footer-links">
             <li><a href="http://scanfcode.com/about/">About Us</a></li>
@@ -35,7 +35,7 @@
             <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
             <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
           </ul>
-        </div>
+        </div> -->
       </div>
       <hr />
     </div>
@@ -43,7 +43,7 @@
       <div class="row">
         <div class="col-md-8 col-sm-6 col-xs-12">
           <p class="copyright-text">
-            Copyright &copy; 2017 All Rights Reserved by <a href="#">Scanfcode</a>.
+            Copyright &copy; 2017 All Rights Reserved by <a href="#">John King</a>.
           </p>
         </div>
 
@@ -70,11 +70,11 @@
 <style lang="scss" scoped>
 .site-footer {
   margin-top: 2rem;
-  background-color: #26272b;
+  background-color: #000;
   padding: 45px 0 20px;
   font-size: 15px;
   line-height: 24px;
-  color: #737373;
+  color: #fff;
 }
 .site-footer hr {
   border-top-color: #bbb;
@@ -84,17 +84,18 @@
   margin: 20px 0;
 }
 .site-footer h6 {
-  color: #fff;
+  color: var(--primary-color);
   font-size: 16px;
   text-transform: uppercase;
   margin-top: 5px;
   letter-spacing: 2px;
 }
 .site-footer a {
-  color: #737373;
+  color: #fff;
+  cursor: pointer;
 }
 .site-footer a:hover {
-  color: #3366cc;
+  color: var(--primary-color);
   text-decoration: none;
 }
 .footer-links {
@@ -105,13 +106,13 @@
   display: block;
 }
 .footer-links a {
-  color: #737373;
+  color: #fff;
 }
 .footer-links a:active,
 .footer-links a:focus,
 .footer-links a:hover {
-  color: #3366cc;
-  text-decoration: none;
+  color: var(--primary-color);
+  text-decoration: underline;
 }
 .footer-links.inline li {
   display: inline-block;

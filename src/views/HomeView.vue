@@ -1,5 +1,5 @@
 <script setup>
-import TheBanner from '../components/Banner.vue'
+import TheBanner from '../components/TheBanner.vue'
 import TheMenu from '../components/TheMenu.vue'
 import TheFooter from '../components/TheFooter.vue'
 import Card from '../components/Card.vue'
@@ -10,7 +10,7 @@ import Card from '../components/Card.vue'
     <TheBanner />
     <TheMenu />
 
-    <h1>Planks</h1>
+    <h1>Planks <a href="">See all</a></h1>
     <div class="items">
       <Card
         :title="'Title 1'"
@@ -39,7 +39,7 @@ import Card from '../components/Card.vue'
       />
     </div>
 
-    <h1>Books</h1>
+    <h1>Books <a href="">See all</a></h1>
     <div class="items">
       <Card
         :title="'Title 1'"
@@ -68,7 +68,7 @@ import Card from '../components/Card.vue'
       />
     </div>
 
-    <h1>Audio Visual</h1>
+    <h1>Audio Visual <a href="">See all</a></h1>
     <div class="items">
       <Card
         :title="'Title 1'"
@@ -102,10 +102,19 @@ import Card from '../components/Card.vue'
 
 <style lang="scss" scoped>
 h1 {
-  color: #2ab8ba;
+  color: var(--primary-color);
   margin-left: 10%;
   margin-top: 3rem;
   margin-bottom: 1rem;
+  font-size: 1.5rem;
+
+  a {
+    font-size: 0.75rem;
+    color: white;
+    text-decoration: underline;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
 }
 
 .items {
