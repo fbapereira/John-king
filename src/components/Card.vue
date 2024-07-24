@@ -9,7 +9,7 @@ defineProps({
 <template>
   <div class="container">
     <div class="wrapper">
-      <div class="banner-image" :style="{ backgroundImage: `url('${image}')` }"></div>
+      <img class="banner-image" :src="image" alt="image" />
       <h3>{{ title }}</h3>
       <p>
         {{ description }}

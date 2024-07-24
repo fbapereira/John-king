@@ -7,7 +7,7 @@
 <style scoped>
 .parallax {
   /* The image used */
-  background-image: url('../../src/assets/home_banner.jpg');
+  background-image: url('@/assets/home_banner.jpg');
 
   /* Set a specific height */
   min-height: 500px;
