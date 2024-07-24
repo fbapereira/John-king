@@ -56,10 +56,11 @@ h1 {
 }
 
 .image {
-  height: 80vh;
+  max-height: 80vh;
   display: flex;
   justify-content: center;
   margin: auto;
+  max-width: 90%;
 }
 
 .page {
