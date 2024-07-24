@@ -1,23 +1,22 @@
 <script setup>
 import TheMenu from '../components/TheMenu.vue'
 import TheFooter from '../components/TheFooter.vue'
-import Card from '../components/Card.vue'
 import { useCategoryStore } from '@/stores/categories'
 import { useRoute } from 'vue-router'
 import { ref, watch, onMounted } from 'vue'
 
 const route = useRoute()
 const store = useCategoryStore()
-const targetCategory = ref()
+const artItem = ref()
 
 watch(store.categories, () => fetch())
 watch(route, () => fetch())
 onMounted(() => fetch())
 
 function fetch() {
-  targetCategory.value = store.categories.value.filter(
-    (cat) => cat.slug === route.params.category
-  )[0]
+  const category = store.categories.value.filter((cat) => cat.slug === route.params.category)[0]
+  if (!category) return
+  artItem.value = category.artItem.filter((art) => art.slug === route.params.artItem)[0]
 }
 
 defineProps({
@@ -29,16 +28,9 @@ defineProps({
     <div class="header">
       <TheMenu />
     </div>
-    <h1>{{ targetCategory?.name }}</h1>
-    <div class="items" v-for="artItem in targetCategory?.artItem ?? []" v-bind:key="artItem.slug">
-      <Card
-        :title="artItem.title"
-        :description="artItem.description"
-        :image="artItem.image.url"
-        :category="route.params.category"
-        :slug="artItem.slug"
-      />
-    </div>
+    <img class="image" :src="artItem?.image?.url" alt="image" />
+    <h1>{{ artItem?.title }}</h1>
+    <div class="page" :innerHTML="artItem?.fullPage.html"></div>
   </main>
   <TheFooter />
 </template>
@@ -46,28 +38,33 @@ defineProps({
 <style lang="scss" scoped>
 .header {
   margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+p {
+  color: #cfcfcf;
+  text-align: center;
 }
 
 h1 {
   color: var(--primary-color);
-  margin-left: 10%;
   margin-top: 3rem;
   margin-bottom: 1rem;
   font-size: 1.5rem;
-
-  a {
-    font-size: 0.75rem;
-    color: white;
-    text-decoration: underline;
-    margin-left: 0.5rem;
-    vertical-align: middle;
-  }
+  width: 100%;
+  text-align: center;
 }
 
-.items {
+.image {
+  height: 80vh;
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 0 10%;
+  justify-content: center;
+  margin: auto;
+}
+
+.page {
+  width: 80%;
+  margin: auto;
+  color: white;
 }
 </style>

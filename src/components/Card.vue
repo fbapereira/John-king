@@ -1,8 +1,12 @@
 <script setup>
+import { RouterLink } from 'vue-router'
+
 defineProps({
   title: String,
   description: String,
-  image: String
+  image: String,
+  category: String,
+  slug: String
 })
 </script>
 
@@ -16,7 +20,9 @@ defineProps({
       </p>
     </div>
     <div class="button-wrapper">
-      <button class="btn outline">Read More</button>
+      <RouterLink :to="'/' + category + '/' + slug">
+        <button class="btn outline">Read More</button>
+      </RouterLink>
       <!-- <button class="btn fill">BUY NOW</button> -->
     </div>
   </div>

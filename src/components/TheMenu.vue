@@ -14,7 +14,7 @@ const categories = store.categories
       </RouterLink>
     </div>
     <div class="menu-item" v-for="category in categories" v-bind:key="category.slug">
-      <RouterLink :to="category.slug">
+      <RouterLink :to="'/' + category.slug">
         <div class="container-card">{{ category.name }}</div>
       </RouterLink>
     </div>

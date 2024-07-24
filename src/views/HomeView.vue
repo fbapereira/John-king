@@ -24,6 +24,8 @@ const categories = store.categories
           :title="artItem.title"
           :description="artItem.description"
           :image="artItem.image.url"
+          :category="category.slug"
+          :slug="artItem.slug"
         />
       </div>
     </template>

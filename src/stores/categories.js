@@ -21,6 +21,9 @@ const query = gql`
         title
         slug
         description
+        fullPage {
+          html
+        }
         image {
           url
         }
