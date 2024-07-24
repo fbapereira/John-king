@@ -19,8 +19,10 @@ const categories = store.categories
         {{ category.name }}
         <RouterLink :to="category.slug"> See all </RouterLink>
       </h1>
-      <div class="items" v-for="artItem in category.artItem" v-bind:key="artItem.slug">
+      <div class="items">
         <Card
+          v-for="artItem in category.artItem"
+          v-bind:key="artItem.slug"
           :title="artItem.title"
           :description="artItem.description"
           :image="artItem.image.url"

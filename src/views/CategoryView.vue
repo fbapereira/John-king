@@ -30,8 +30,10 @@ defineProps({
       <TheMenu />
     </div>
     <h1>{{ targetCategory?.name }}</h1>
-    <div class="items" v-for="artItem in targetCategory?.artItem ?? []" v-bind:key="artItem.slug">
+    <div class="items">
       <Card
+        v-for="artItem in targetCategory?.artItem ?? []"
+        v-bind:key="artItem.slug"
         :title="artItem.title"
         :description="artItem.description"
         :image="artItem.image.url"
