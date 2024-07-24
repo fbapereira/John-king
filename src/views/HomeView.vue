@@ -3,6 +3,10 @@ import TheBanner from '../components/TheBanner.vue'
 import TheMenu from '../components/TheMenu.vue'
 import TheFooter from '../components/TheFooter.vue'
 import Card from '../components/Card.vue'
+import { useCategoryStore } from '@/stores/categories'
+
+const store = useCategoryStore()
+const categories = store.categories
 </script>
 
 <template>
@@ -10,92 +14,16 @@ import Card from '../components/Card.vue'
     <TheBanner />
     <TheMenu />
 
-    <h1>Planks <a href="">See all</a></h1>
-    <div class="items">
-      <Card
-        :title="'Title 1'"
-        :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '"
-        :image="'../../src/assets/jakplank_01.jpg'"
-      />
-      <Card
-        :title="'Title 2'"
-        :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '"
-        :image="'../../src/assets/jakplank_02.jpg'"
-      />
-      <Card
-        :title="'Title 3'"
-        :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '"
-        :image="'../../src/assets/jakplank_03.jpg'"
-      />
-      <Card
-        :title="'Title 4'"
-        :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '"
-        :image="'../../src/assets/jakplank_04.jpg'"
-      />
-      <Card
-        :title="'Title 5'"
-        :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '"
-        :image="'../../src/assets/jakplank_05.jpg'"
-      />
-    </div>
-
-    <h1>Books <a href="">See all</a></h1>
-    <div class="items">
-      <Card
-        :title="'Title 1'"
-        :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '"
-        :image="'../../src/assets/poem_01.jpg'"
-      />
-      <Card
-        :title="'Title 2'"
-        :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '"
-        :image="'../../src/assets/poem_02.jpg'"
-      />
-      <Card
-        :title="'Title 3'"
-        :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '"
-        :image="'../../src/assets/poem_03.jpg'"
-      />
-      <Card
-        :title="'Title 4'"
-        :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '"
-        :image="'../../src/assets/poem_04.jpg'"
-      />
-      <Card
-        :title="'Title 5'"
-        :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '"
-        :image="'../../src/assets/poem_05.jpg'"
-      />
-    </div>
-
-    <h1>Audio Visual <a href="">See all</a></h1>
-    <div class="items">
-      <Card
-        :title="'Title 1'"
-        :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '"
-        :image="'../../src/assets/blue_01.jpg'"
-      />
-      <Card
-        :title="'Title 2'"
-        :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '"
-        :image="'../../src/assets/blue_02.jpg'"
-      />
-      <Card
-        :title="'Title 3'"
-        :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '"
-        :image="'../../src/assets/blue_03.jpg'"
-      />
-      <Card
-        :title="'Title 4'"
-        :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '"
-        :image="'../../src/assets/blue_04.jpg'"
-      />
-      <Card
-        :title="'Title 5'"
-        :description="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '"
-        :image="'../../src/assets/blue_05.jpg'"
-      />
-    </div>
+    <template v-for="category in categories" v-bind:key="category.slug">
+      <h1>{{ category.name }} <a href="">See all</a></h1>
+      <div class="items" v-for="artItem in category.artItem" v-bind:key="artItem.slug">
+        <Card
+          :title="artItem.title"
+          :description="artItem.description"
+          :image="artItem.image.url"
+        />
+      </div>
+    </template>
   </main>
   <TheFooter />
 </template>

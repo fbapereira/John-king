@@ -37,6 +37,7 @@ defineProps({
   justify-content: center;
   text-align: center;
   min-width: 20rem;
+  max-width: 25rem;
 }
 
 .banner-image {

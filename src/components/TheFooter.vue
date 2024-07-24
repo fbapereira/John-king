@@ -1,4 +1,9 @@
-<script setup></script>
+<script setup>
+import { useCategoryStore } from '@/stores/categories'
+
+const store = useCategoryStore()
+const categories = store.categories
+</script>
 <template>
   <footer class="site-footer">
     <div class="container">
@@ -20,9 +25,11 @@
         <div class="col-xs-6 col-md-3">
           <h6>Categories</h6>
           <ul class="footer-links">
-            <li><a>JakPLanks</a></li>
-            <li><a>audio-visualn</a></li>
-            <li><a>Books</a></li>
+            <template v-for="category in categories" v-bind:key="category.slug">
+              <li>
+                <a>{{ category.name }}</a>
+              </li>
+            </template>
           </ul>
         </div>
 

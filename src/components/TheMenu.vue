@@ -1,15 +1,14 @@
-<script setup></script>
+<script setup>
+import { useCategoryStore } from '@/stores/categories'
+
+const store = useCategoryStore()
+const categories = store.categories
+</script>
 <template>
   <!-- RouterLink to="/">Home</RouterLink> -->
   <div class="menu">
-    <div class="menu-item">
-      <div class="container-card">Jak Planks</div>
-    </div>
-    <div class="menu-item">
-      <div class="container-card">Books</div>
-    </div>
-    <div class="menu-item">
-      <div class="container-card">Audi Visual</div>
+    <div class="menu-item" v-for="category in categories" v-bind:key="category.slug">
+      <div class="container-card">{{ category.name }}</div>
     </div>
   </div>
 </template>
