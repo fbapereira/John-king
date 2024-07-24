@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CategoryView from '../views/CategoryView.vue'
+import SubCategoryView from '../views/SubCategoryView.vue'
 import ArtItemDetail from '../views/ArtItemDetail.vue'
 
 const router = createRouter({
@@ -21,7 +22,13 @@ const router = createRouter({
       props: true
     },
     {
-      path: '/:category/:artItem',
+      path: '/:category/:subcategory',
+      name: 'Subcategory',
+      component: SubCategoryView,
+      props: true
+    },
+    {
+      path: '/:category/:subcategory/:artItem',
       name: 'ArtItem',
       component: ArtItemDetail,
       props: true

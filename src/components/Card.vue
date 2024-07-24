@@ -6,6 +6,7 @@ defineProps({
   description: String,
   image: String,
   category: String,
+  subcategory: String,
   slug: String
 })
 </script>
@@ -20,7 +21,7 @@ defineProps({
       </p>
     </div>
     <div class="button-wrapper">
-      <RouterLink :to="'/' + category + '/' + slug">
+      <RouterLink :to="'/' + category + '/' + subcategory + '/' + slug">
         <button class="btn outline">Read More</button>
       </RouterLink>
       <!-- <button class="btn fill">BUY NOW</button> -->
@@ -42,8 +43,6 @@ defineProps({
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-width: 20rem;
-  max-width: 25rem;
 }
 
 .banner-image {

@@ -1,9 +1,9 @@
 <script setup>
 import TheBanner from '../components/TheBanner.vue'
-import TheMenu from '../components/TheMenu.vue'
 import TheFooter from '../components/TheFooter.vue'
-import Card from '../components/Card.vue'
+
 import { useCategoryStore } from '@/stores/categories'
+import { RouterLink } from 'vue-router'
 
 const store = useCategoryStore()
 const categories = store.categories
@@ -12,52 +12,81 @@ const categories = store.categories
 <template>
   <main>
     <TheBanner />
-    <TheMenu />
-
-    <template v-for="category in categories" v-bind:key="category.slug">
-      <h1>
-        {{ category.name }}
-        <RouterLink :to="category.slug"> See all </RouterLink>
-      </h1>
-      <div class="items">
-        <Card
-          v-for="artItem in category.artItem"
-          v-bind:key="artItem.slug"
-          :title="artItem.title"
-          :description="artItem.description"
-          :image="artItem.image.url"
-          :category="category.slug"
-          :slug="artItem.slug"
-        />
+    <div class="gradient-cards container">
+      <div class="row">
+        <div
+          class="card col-sm-12 col-md-4 col-lg-4"
+          v-for="category in categories"
+          v-bind:key="category.slug"
+        >
+          <div class="container-card bg-green-box">
+            <p class="card-title">{{ category.name }}</p>
+            <p class="card-description">{{ category.description }}</p>
+            <RouterLink :to="category.slug">View more</RouterLink>
+          </div>
+        </div>
       </div>
-    </template>
+    </div>
   </main>
   <TheFooter />
 </template>
 
 <style lang="scss" scoped>
-h1 {
-  color: var(--primary-color);
-  margin-left: 10%;
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
+.gradient-cards {
+  display: flex;
+}
 
-  a {
-    font-size: 0.75rem;
-    color: white;
-    text-decoration: underline;
-    margin-left: 0.5rem;
-    vertical-align: middle;
+.card {
+  max-width: 550px;
+  border: 0;
+  width: 100%;
+  margin-inline: auto;
+  background-color: transparent;
+  margin-bottom: 2rem;
+}
+
+.container-card {
+  position: relative;
+  border: 2px solid transparent;
+  background: linear-gradient(71deg, #080509, #1a171c, #080509);
+  background-clip: padding-box;
+  border-radius: 45px;
+  padding: 40px;
+  position: relative;
+
+  img {
+    margin-bottom: 32px;
   }
 }
 
-.items {
-  display: flex;
-  gap: 20px;
-  flex-wrap: nowrap;
-  overflow: scroll;
-  scroll-behavior: auto;
-  padding: 0 10%;
+.container-card::after {
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: -1px;
+  right: -1px;
+  content: '';
+  z-index: -1;
+  border-radius: 45px;
+  background: linear-gradient(71deg, #0d1212, var(--primary-color), #0d1212);
+}
+
+.card-title {
+  font-weight: 600;
+  color: var(--primary-color);
+  letter-spacing: -0.02em;
+  line-height: 40px;
+  font-style: normal;
+  font-size: 28px;
+  padding-bottom: 8px;
+  text-align: center;
+}
+
+.card-description {
+  line-height: 32px;
+  color: #eee;
+  font-size: 16px;
+  max-width: 470px;
+  text-align: center;
 }
 </style>

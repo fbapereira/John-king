@@ -17,15 +17,20 @@ const query = gql`
     categories {
       slug
       name
-      artItem {
-        title
+      description
+      subCategory {
         slug
-        description
-        fullPage {
-          html
-        }
-        image {
-          url
+        name
+        artItem {
+          title
+          slug
+          description
+          fullPage {
+            html
+          }
+          image {
+            url
+          }
         }
       }
     }
@@ -36,7 +41,13 @@ export const useCategoryStore = defineStore('category', () => {
   const categoriesData = ref([])
   const categories = computed(() => categoriesData)
 
-  const itemsByCategory = computed(() => {
+  const categoriesBySubcategory = computed(() => {
+    return (category) => {
+      return categoriesData.value.find((c) => c.slug === category)?.subCategory || []
+    }
+  })
+
+  const itemsBySubcategory = computed(() => {
     return (category) => {
       return categoriesData.value.find((c) => c.slug === category)?.artItem || []
     }
@@ -50,5 +61,5 @@ export const useCategoryStore = defineStore('category', () => {
       categoriesData.value = data.categories
     })
 
-  return { categories, itemsByCategory }
+  return { categories, categoriesBySubcategory, itemsBySubcategory }
 })
