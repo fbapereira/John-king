@@ -42,7 +42,7 @@ defineProps({
       </h1>
       <div class="items row">
         <Card
-          class="col-sm-12 col-md-4 col-lg-3"
+          class="col-sm-12 col-md-4 col-lg-3 min-width-20rem"
           v-for="artItem in targetSubCategory.artItem"
           v-bind:key="artItem.slug"
           :title="artItem.title"
@@ -75,6 +75,9 @@ h1 {
   }
 }
 
+.min-width-20rem {
+  min-width: 20rem;
+}
 .items {
   display: flex;
   gap: 20px;

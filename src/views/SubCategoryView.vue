@@ -39,18 +39,20 @@ defineProps({
     <h1>
       {{ targetCategory?.name }} <small>{{ targetSubcategory?.name }}</small>
     </h1>
-    <div class="items row">
-      <Card
-        class="col-sm-12 col-md-4 col-lg-3"
-        v-for="artItem in targetSubcategory?.artItem ?? []"
-        v-bind:key="artItem.slug"
-        :title="artItem.title"
-        :description="artItem.description"
-        :image="artItem.image.url"
-        :category="route.params.category"
-        :subcategory="route.params.subcategory"
-        :slug="artItem.slug"
-      />
+    <div class="container">
+      <div class="row">
+        <Card
+          class="col-sm-12 col-md-4 col-lg-3"
+          v-for="artItem in targetSubcategory?.artItem ?? []"
+          v-bind:key="artItem.slug"
+          :title="artItem.title"
+          :description="artItem.description"
+          :image="artItem.image.url"
+          :category="route.params.category"
+          :subcategory="route.params.subcategory"
+          :slug="artItem.slug"
+        />
+      </div>
     </div>
   </main>
   <TheFooter />
@@ -74,11 +76,5 @@ h1 {
     margin-left: 0.5rem;
     vertical-align: middle;
   }
-}
-
-.items {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 10%;
 }
 </style>

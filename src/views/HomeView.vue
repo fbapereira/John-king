@@ -12,7 +12,7 @@ const categories = store.categories
 <template>
   <main>
     <TheBanner />
-    <div class="gradient-cards container">
+    <div class="container">
       <div class="row">
         <div
           class="card col-sm-12 col-md-4 col-lg-4"
@@ -20,9 +20,9 @@ const categories = store.categories
           v-bind:key="category.slug"
         >
           <div class="container-card bg-green-box">
-            <p class="card-title">{{ category.name }}</p>
-            <p class="card-description">{{ category.description }}</p>
-            <RouterLink :to="category.slug">View more</RouterLink>
+            <RouterLink :to="category.slug">
+              <p class="card-title">{{ category.name }}</p>
+            </RouterLink>
           </div>
         </div>
       </div>
@@ -32,15 +32,8 @@ const categories = store.categories
 </template>
 
 <style lang="scss" scoped>
-.gradient-cards {
-  display: flex;
-}
-
 .card {
-  max-width: 550px;
-  border: 0;
   width: 100%;
-  margin-inline: auto;
   background-color: transparent;
   margin-bottom: 2rem;
 }
@@ -51,11 +44,15 @@ const categories = store.categories
   background: linear-gradient(71deg, #080509, #1a171c, #080509);
   background-clip: padding-box;
   border-radius: 45px;
-  padding: 40px;
   position: relative;
+  padding: 5px;
 
-  img {
-    margin-bottom: 32px;
+  &:hover {
+    border: 2px solid var(--primary-color);
+    background-color: var(--primary-color);
+    a {
+      text-decoration: none;
+    }
   }
 }
 
@@ -72,21 +69,9 @@ const categories = store.categories
 }
 
 .card-title {
-  font-weight: 600;
   color: var(--primary-color);
-  letter-spacing: -0.02em;
-  line-height: 40px;
-  font-style: normal;
-  font-size: 28px;
-  padding-bottom: 8px;
+  font-size: 1.5rem;
   text-align: center;
-}
-
-.card-description {
-  line-height: 32px;
-  color: #eee;
-  font-size: 16px;
-  max-width: 470px;
-  text-align: center;
+  margin-bottom: 0;
 }
 </style>
