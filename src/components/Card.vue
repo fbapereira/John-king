@@ -1,0 +1,110 @@
+<script setup>
+defineProps({
+  title: String,
+  description: String,
+  image: String
+})
+</script>
+
+<template>
+  <div class="container">
+    <div class="wrapper">
+      <div class="banner-image" :style="{ backgroundImage: `url('${image}')` }"></div>
+      <h3>{{ title }}</h3>
+      <p>
+        {{ description }}
+      </p>
+    </div>
+    <div class="button-wrapper">
+      <button class="btn outline">DETAILS</button>
+      <!-- <button class="btn fill">BUY NOW</button> -->
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.container {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.25);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  padding: 38px;
+  filter: drop-shadow(0 30px 10px rgba(0, 0, 0, 0.125));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-width: 20rem;
+  max-width: 80%;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.banner-image {
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.255);
+}
+
+h3 {
+  color: rgba(255, 255, 255, 0.98);
+  text-transform: uppercase;
+}
+
+p {
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.btn {
+  border: none;
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-size: 12px;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.btn + .btn {
+  margin-left: 10px;
+}
+
+.outline {
+  background: transparent;
+  color: rgba(0, 212, 255, 0.9);
+  border: 1px solid rgba(0, 212, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+.outline:hover {
+  transform: scale(1.125);
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+}
+
+.fill {
+  background: rgba(0, 212, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
+  filter: drop-shadow(0);
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.fill:hover {
+  transform: scale(1.125);
+  border-color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.125));
+  transition: all 0.3s ease;
+}
+</style>
